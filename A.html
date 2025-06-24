@@ -1,97 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Orbitron', sans-serif;
+      overflow: hidden;
+      background-color: black;
+    }
+
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      letter-spacing: 2px;
+      text-shadow: 0 0 5px #004d66, 0 0 10px #002233, 0 0 15px #00111a;
+      animation: glow 2.5s ease-in-out infinite alternate, floatText 5s ease-in-out infinite;
+      color: white;
+      transition: color 1s ease;
+      opacity: 1;
+      animation-fill-mode: forwards;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 3px #003b4d, 0 0 6px #00293a, 0 0 10px #001f2d;
+      }
+      to {
+        text-shadow: 0 0 7px #00b3cc, 0 0 15px #0099b3, 0 0 25px #007a99;
+      }
+    }
+
+    @keyframes floatText {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+
+    .detail-btn {
+      margin-top: 2rem;
+      padding: 0.8rem 2rem;
+      font-size: 1rem;
+      color: #00ffff;
+      background: transparent;
+      border: 2px solid #00ffff;
+      border-radius: 25px;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 2s ease forwards;
+      animation-delay: 1.5s;
+      transition: all 0.3s ease;
+    }
+
+    .detail-btn:hover {
+      background-color: #00ffff;
+      color: black;
+      box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Fade Down Animation */
+    @keyframes fadeDown {
+      to {
+        opacity: 0;
+        transform: translateY(60px);
+      }
+    }
+
+    .fade-out {
+      animation: fadeDown 1.2s forwards;
+    }
+
+    /* Navbar Styling */
+    .navbar {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      padding: 1rem 2rem;
+      background-color: rgba(0, 0, 0, 0.9);
+      color: #00ffff;
+      text-align: center;
+      font-size: 1.5rem;
+      transform: translateY(-100%);
+      opacity: 0;
+      animation: fadeInDown 1.5s ease forwards;
+    }
+
+    @keyframes fadeInDown {
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 2rem;
+        letter-spacing: 1px;
+      }
+    }
+    .navbar a {
+  margin: 0 1.5rem;
+  text-decoration: none;
+  color: #00ffff;
+  font-weight: bold;
+  transition: color 0.3s, text-shadow 0.3s;
+}
+
+.navbar a:hover {
+  color: #ffffff;
+  text-shadow: 0 0 10px #00ffff;
+}
+
+  </style>
 </head>
-<style>
-    @font-face {
-            font-family: 'Valorant';
-            src: url('https://fonts.cdnfonts.com/s/33993/Valorant Font.woff') format('woff');
-        }
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #0a0d14;
-            color: white;
-        }
-        .hero {
-            height: 120vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            flex-direction: column;
-            padding: 20px;
-        }
-        .hero h1, .hero pre {
-            margin-top: 0.2rem;
-            font-family: 'Valorant', sans-serif;
-            opacity: 0;
-            transform: scale(0.8);
-            animation: fadeInScale 1s ease-out forwards;
-        }
-        .hero h1 {
-            color: #2a7de1;
-            font-size: 4rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            max-width: 1000px;
-            animation-delay: 0.5s;
-        }
-        .hero pre {
-            font-size: 1.5rem;
-            color: white;
-            max-width: 700px;
-            line-height: 1.4;
-            margin-top: 10px;
-            animation-delay: 0.5s;
-        }
-        .navbar {
-            height:3rem;
-            background-color: #131820;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-        }
-        .navbar a {
-            color: white;
-            text-decoration: none;
-            font-size: 1.5rem;
-            margin: 0 25px;
-            text-transform: uppercase;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-        .navbar a:hover {
-            color: #2a7de1;
-        }
-        @keyframes fadeInScale {
-            0% {
-                opacity: 0;
-                transform: scale(0.8);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-    
-</style>
 <body>
-    <div class="hero">
-        <h1>Welcome to My Portfolio</h1>
-        <pre>Get to know me and what I am profficient at(scroll down)
-        </pre>
-    </div>
-    <nav class="navbar">
-        <a href="A.html">Home</a>
-        <a href="services.html">Services</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-        
-    </nav>
+  <section class="hero">
+    <h1 id="greeting">Welcome to my website!</h1>
+    <button class="detail-btn">Detail</button>
+  </section>
+
+  <!-- Navbar hidden initially -->
+  <div class="navbar" id="navbar" style="display: none;">
+  <a href="#experience">Experience</a>
+  <a href="#service">Service</a>
+  <a href="#contact">Contact</a>
+</div>
+
+
+  <script>
+    const messages = [
+      { text: "Welcome to my website!", color: "white" },
+      { text: "السلام عليكم", color: "#00d9ff" },
+      { text: "ようこそ！", color: "#00ff88" }
+    ];
+
+    let index = 0;
+    const greetingEl = document.getElementById("greeting");
+
+    function showNextMessage() {
+      greetingEl.style.opacity = 0;
+      setTimeout(() => {
+        greetingEl.textContent = messages[index].text;
+        greetingEl.style.color = messages[index].color;
+        greetingEl.style.opacity = 1;
+        index = (index + 1) % messages.length;
+      }, 200);
+    }
+
+    setInterval(showNextMessage, 1500);
+
+    const detailBtn = document.querySelector('.detail-btn');
+    const navbar = document.getElementById('navbar');
+
+    detailBtn.addEventListener('click', () => {
+      // Add fade-out to both elements
+      detailBtn.classList.add('fade-out');
+      greetingEl.classList.add('fade-out');
+
+      // After animation ends, hide hero and show navbar
+      setTimeout(() => {
+        document.querySelector('.hero').style.display = 'none';
+        navbar.style.display = 'block';
+        // Trigger navbar animation
+        navbar.style.animation = 'fadeInDown 1.5s forwards';
+      }, 1300); // Match this with fadeDown duration
+    });
+  </script>
 </body>
 </html>
