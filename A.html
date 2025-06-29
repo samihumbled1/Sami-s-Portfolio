@@ -85,7 +85,6 @@
       }
     }
 
-    /* Fade Down Animation */
     @keyframes fadeDown {
       to {
         opacity: 0;
@@ -97,7 +96,6 @@
       animation: fadeDown 1.2s forwards;
     }
 
-    /* Navbar Styling */
     .navbar {
       position: absolute;
       top: 0;
@@ -125,19 +123,19 @@
         letter-spacing: 1px;
       }
     }
+
     .navbar a {
-  margin: 0 1.5rem;
-  text-decoration: none;
-  color: #00ffff;
-  font-weight: bold;
-  transition: color 0.3s, text-shadow 0.3s;
-}
+      margin: 0 1.5rem;
+      text-decoration: none;
+      color: #00ffff;
+      font-weight: bold;
+      transition: color 0.3s, text-shadow 0.3s;
+    }
 
-.navbar a:hover {
-  color: #ffffff;
-  text-shadow: 0 0 10px #00ffff;
-}
-
+    .navbar a:hover {
+      color: #ffffff;
+      text-shadow: 0 0 10px #00ffff;
+    }
   </style>
 </head>
 <body>
@@ -146,13 +144,12 @@
     <button class="detail-btn">Detail</button>
   </section>
 
-  <!-- Navbar hidden initially -->
-  <div class="navbar" id="navbar" style="display: none;"><a>Portfolio in progress!!</a><br>
-  <a href="#experience">Experience</a>
-  <a href="#service">Service</a>
-  <a href="#contact">Contact</a>
-</div>
-
+  <div class="navbar" id="navbar" style="display: none;">
+    <a>Portfolio in progress!!</a><br>
+    <a href="#experience">Experience</a>
+    <a href="#service">Service</a>
+    <a href="#contact">Contact</a>
+  </div>
 
   <script>
     const messages = [
@@ -180,17 +177,13 @@
     const navbar = document.getElementById('navbar');
 
     detailBtn.addEventListener('click', () => {
-      // Add fade-out to both elements
       detailBtn.classList.add('fade-out');
       greetingEl.classList.add('fade-out');
-
-      // After animation ends, hide hero and show navbar
       setTimeout(() => {
         document.querySelector('.hero').style.display = 'none';
         navbar.style.display = 'block';
-        // Trigger navbar animation
         navbar.style.animation = 'fadeInDown 1.5s forwards';
-      }, 1300); // Match this with fadeDown duration
+      }, 1300);
     });
   </script>
 </body>
