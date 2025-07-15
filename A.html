@@ -2,189 +2,260 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>My Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sami's Portfolio</title>
   <style>
     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    html, body {
-      height: 100%;
-      font-family: 'Orbitron', sans-serif;
-      overflow: hidden;
-      background-color: black;
-    }
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #fff0f5;
+  color: #333;
+  line-height: 1.6;
+  padding-bottom: 60px;
+  min-height: 150vh;
+  margin: 0;
+}
 
-    .hero {
-      position: relative;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 2rem;
-    }
+.hero {
+  background-attachment: fixed;
+  background: url("https://www.icegif.com/wp-content/uploads/2022/01/icegif-254.gif") center center / cover no-repeat fixed;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 1rem;
+}
 
-    .hero h1 {
-      font-size: 3.5rem;
-      letter-spacing: 2px;
-      text-shadow: 0 0 5px #004d66, 0 0 10px #002233, 0 0 15px #00111a;
-      animation: glow 2.5s ease-in-out infinite alternate, floatText 5s ease-in-out infinite;
-      color: white;
-      transition: color 1s ease;
-      opacity: 1;
-      animation-fill-mode: forwards;
-    }
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(255, 192, 203, 0.5);
+  backdrop-filter: blur(3px);
+  z-index: 1;
+}
 
-    @keyframes glow {
-      from {
-        text-shadow: 0 0 3px #003b4d, 0 0 6px #00293a, 0 0 10px #001f2d;
-      }
-      to {
-        text-shadow: 0 0 7px #00b3cc, 0 0 15px #0099b3, 0 0 25px #007a99;
-      }
-    }
+.hero-content {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  padding: 2rem;
+  max-width: 600px;
+  width: 100%;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
 
-    @keyframes floatText {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-      100% { transform: translateY(0); }
-    }
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  word-wrap: break-word;
+}
 
-    .detail-btn {
-      margin-top: 2rem;
-      padding: 0.8rem 2rem;
-      font-size: 1rem;
-      color: #00ffff;
-      background: transparent;
-      border: 2px solid #00ffff;
-      border-radius: 25px;
-      cursor: pointer;
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeUp 2s ease forwards;
-      animation-delay: 1.5s;
-      transition: all 0.3s ease;
-    }
+.hero p {
+  font-size: 1.5rem;
+  animation: fadeIn 1.5s ease-in;
+  word-wrap: break-word;
+}
 
-    .detail-btn:hover {
-      background-color: #00ffff;
-      color: black;
-      box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
-    }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
-    @keyframes fadeUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+.navbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff0f5;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+  z-index: 999;
+}
 
-    @keyframes fadeDown {
-      to {
-        opacity: 0;
-        transform: translateY(60px);
-      }
-    }
+.nav-container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
 
-    .fade-out {
-      animation: fadeDown 1.2s forwards;
-    }
+.logo {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #c71585;
+  text-decoration: none;
+  flex-shrink: 0;
+}
 
-    .navbar {
-      position: absolute;
-      top: 0;
-      width: 100%;
-      padding: 1rem 2rem;
-      background-color: rgba(0, 0, 0, 0.9);
-      color: #00ffff;
-      text-align: center;
-      font-size: 1.5rem;
-      transform: translateY(-100%);
-      opacity: 0;
-      animation: fadeInDown 1.5s ease forwards;
-    }
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
 
-    @keyframes fadeInDown {
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
+.nav-links a {
+  text-decoration: none;
+  font-weight: 500;
+  color: #6a1b9a;
+  transition: color 0.3s ease;
+  white-space: nowrap;
+}
 
-    @media (max-width: 600px) {
-      .hero h1 {
-        font-size: 2rem;
-        letter-spacing: 1px;
-      }
-    }
+.nav-links a:hover,
+.nav-links .active {
+  color: #d63384;
+  border-bottom: 2px solid #d63384;
+}
 
-    .navbar a {
-      margin: 0 1.5rem;
-      text-decoration: none;
-      color: #00ffff;
-      font-weight: bold;
-      transition: color 0.3s, text-shadow 0.3s;
-    }
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.2rem;
+  }
 
-    .navbar a:hover {
-      color: #ffffff;
-      text-shadow: 0 0 10px #00ffff;
-    }
+  .hero p {
+    font-size: 1.2rem;
+  }
+
+  .nav-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .nav-container {
+    padding: 1rem;
+  }
+
+  .logo {
+    font-size: 1.3rem;
+  }
+}.intro-text {
+  max-width: 720px;
+  margin: 4rem auto 7rem;
+  padding: 2.5rem 3rem;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow:
+    0 4px 15px rgba(214, 51, 132, 0.15),
+    0 8px 40px rgba(106, 27, 154, 0.1);
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.65rem;
+  color: #4b0076;
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+  user-select: none;
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 1.2s ease forwards;
+}
+
+.intro-text p {
+  margin: 0;
+  font-weight: 500;
+}
+
+.intro-text span {
+  position: relative;
+  font-weight: 700;
+  color: #c71585;
+  cursor: default;
+}
+
+.intro-text span::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -8px;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 3px;
+  background: linear-gradient(90deg, #d63384, #c71585);
+  border-radius: 3px;
+  transition: transform 0.3s ease;
+  transform-origin: center;
+}
+
+.intro-text span:hover::after {
+  transform: translateX(-50%) scaleX(1.2);
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .intro-text {
+    font-size: 1.3rem;
+    padding: 2rem 1.5rem;
+  }
+}
+
+
   </style>
 </head>
 <body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="A.html" class="logo">Sami 🌸</a>
+      <ul class="nav-links">
+        <li><a href="A.html" class="active">Home</a></li>
+        <li><a href="about.html">About Me</a></li>
+        <li><a href="service.html">Services</a></li>
+        <li><a href="contact.html">Contact Me</a></li>
+      </ul>
+    </div>
+  </nav>
+
   <section class="hero">
-    <h1 id="greeting">Welcome to my website!</h1>
-    <button class="detail-btn">Detail</button>
+    <div class="hero-content">
+      <h1>Nice to meet you</h1>
+      <p>My name is Sami</p>
+    </div>
   </section>
+ <section class="intro-text">
+  <p>Get to know me, <span>my life</span> and <span>what I am proficient at</span></p>
+</section>
 
-  <div class="navbar" id="navbar" style="display: none;">
-    <a>Portfolio in progress!!</a><br>
-    <a href="#experience">Experience</a>
-    <a href="#service">Service</a>
-    <a href="#contact">Contact</a>
-  </div>
 
-  <script>
-    const messages = [
-      { text: "Welcome to my website!", color: "white" },
-      { text: "السلام عليكم", color: "#00d9ff" },
-      { text: "ようこそ！", color: "#00ff88" }
-    ];
 
-    let index = 0;
-    const greetingEl = document.getElementById("greeting");
 
-    function showNextMessage() {
-      greetingEl.style.opacity = 0;
-      setTimeout(() => {
-        greetingEl.textContent = messages[index].text;
-        greetingEl.style.color = messages[index].color;
-        greetingEl.style.opacity = 1;
-        index = (index + 1) % messages.length;
-      }, 200);
-    }
-
-    setInterval(showNextMessage, 1500);
-
-    const detailBtn = document.querySelector('.detail-btn');
-    const navbar = document.getElementById('navbar');
-
-    detailBtn.addEventListener('click', () => {
-      detailBtn.classList.add('fade-out');
-      greetingEl.classList.add('fade-out');
-      setTimeout(() => {
-        document.querySelector('.hero').style.display = 'none';
-        navbar.style.display = 'block';
-        navbar.style.animation = 'fadeInDown 1.5s forwards';
-      }, 1300);
-    });
-  </script>
 </body>
 </html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Services - Sami</title>
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(135deg, #ffd6ec, #ffeaf7, #fff0f5);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(255, 105, 180, 0.15);
+      padding: 3rem;
+      max-width: 800px;
+      width: 100%;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.6rem;
+      color: #c71585;
+      margin-bottom: 2rem;
+    }
+
+    .services-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .services-list li {
+      padding: 1.2rem;
+      margin-bottom: 1rem;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 12px;
+      font-size: 1.2rem;
+      color: #6a1b9a;
+      border-left: 5px solid #d63384;
+      transition: background 0.3s ease;
+    }
+
+    .services-list li:hover {
+      background: rgba(255, 255, 255, 0.7);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        padding: 2rem;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .services-list li {
+        font-size: 1rem;
+        padding: 1rem;
+      }
+    }
+
+    /* Navigation Bar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+
+    .nav-container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #c71585;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #6a1b9a;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links .active {
+      color: #d63384;
+      border-bottom: 2px solid #d63384;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>My Services</h1>
+    <ul class="services-list">
+      <li>💻 Aesthetic HTML/CSS/JS Website Creation</li>
+      <li>📝 Helping with School Projects & Presentations</li>
+      <li>🎨 Simple Graphic Design (Logos, Posters)</li>
+      <li>📚 Tutoring in Basic Math or English (Class 1–8)</li>
+      <li>♟️ Chess Help & Coaching</li>
+    </ul>
+  </div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="A.html" class="logo">Sami 🌸</a>
+      <ul class="nav-links">
+        <li><a href="A.html">Home</a></li>
+        <li><a href="about.html">About Me</a></li>
+        <li><a href="service.html" class="active">Services</a></li>
+        <li><a href="contact.html">Contact Me</a></li>
+      </ul>
+    </div>
+  </nav>
+
+</body>
+</html>

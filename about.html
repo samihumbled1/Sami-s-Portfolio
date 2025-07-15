@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Sami</title>
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(135deg, #ffd6ec, #ffeaf7, #fff0f5);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    
+
+    .card {
+      background: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(255, 105, 180, 0.15);
+      padding: 3rem;
+      max-width: 700px;
+      width: 100%;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.6rem;
+      color: #c71585;
+      margin-bottom: 2rem;
+    }
+
+    .profile-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .profile-table td {
+      padding: 1rem;
+      border-bottom: 1px dashed #f8bbd0;
+      font-size: 1.2rem;
+    }
+
+    .profile-table td.label {
+      font-weight: 600;
+      color: #b03060;
+      width: 40%;
+      text-align: right;
+      padding-right: 2rem;
+    }
+
+    .profile-table td.value {
+      color: #6a1b9a;
+      text-align: left;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        padding: 2rem;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .profile-table td {
+        font-size: 1rem;
+        padding: 0.7rem;
+      }
+
+      .profile-table td.label {
+        padding-right: 1rem;
+      }
+    }
+    /* Navigation Bar */
+    .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+    }
+
+.nav-container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #c71585;
+  text-decoration: none;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-weight: 500;
+  color: #6a1b9a;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links .active {
+  color: #d63384;
+  border-bottom: 2px solid #d63384;
+}
+
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>About Me</h1>
+    <table class="profile-table">
+      <tr>
+        <td class="label">Name:</td>
+        <td class="value">Sami</td>
+      </tr>
+      <tr>
+        <td class="label">From:</td>
+        <td class="value">Bangladesh</td>
+      </tr>
+      <tr>
+        <td class="label">Date of Birth:</td>
+        <td class="value">October 24, 2008</td>
+      </tr>
+      <tr>
+        <td class="label">Current Class:</td>
+        <td class="value">Class 10 (New)</td>
+      </tr>
+      <tr>
+        <td class="label">Hobbies:</td>
+        <td class="value">Chess ♟️, Fitness 💪</td>
+      </tr>
+      <tr>
+        <td class="label">Age:</td>
+        <td class="value" id="age">Loading...</td>
+      </tr>
+    </table>
+  </div>
+
+  <script>
+    function calculateAge(birthDateString) {
+      const now = new Date();
+      const birthDate = new Date(birthDateString);
+      let age = now.getFullYear() - birthDate.getFullYear();
+      const m = now.getMonth() - birthDate.getMonth();
+      if (m < 0 || (m === 0 && now.getDate() < birthDate.getDate())) {
+        age--;
+      }
+      return age;
+    }
+
+    document.getElementById("age").textContent = calculateAge("2008-10-24") + " years old";
+  </script>
+<!-- Navigation Bar -->
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="A.html" class="logo">Sami 🌸</a>
+    <ul class="nav-links">
+      <li><a href="A.html">Home</a></li>
+      <li><a href="about.html" class="active">About Me</a></li>
+      <li><a href="service.html">Services</a></li>
+      <li><a href="contact.html">Contact Me</a></li>
+    </ul>
+  </div>
+</nav>
+
+</body>
+</html>
